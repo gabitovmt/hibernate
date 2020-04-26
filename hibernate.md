@@ -4,6 +4,7 @@
 
 * _ORM_, _Object-Relational Mapping_ - объектно-реляционное отображение.
 * _JPA_, _Java Persistence API_ - спецификация ORM в Java.
+* _JTA_, _Java Transaction API_ — API, для поддержки транзакций.
 * _JPQL_, _Java Persistence Query Language_ - платформенно-независимый объектно-ориентированный язык запросов.
 * _persistent data_ - данные, хранящиеся долговременно.
 * _object persistence_ - долговременное хранение объектов.
@@ -11,10 +12,14 @@
 * _DDL_, _Data Definition Language_ - язык описания данных.
 * _DML_, _Data Manipulation Language_ - язык управления данными.
 * _JDBC_, _Java Database Connectivity_ - API, соединение с базами данных на Java.
-* _ACID_, _Atomicity_, _Consistency_, _Isolation_, _Durability_ - Атомарность, Согласованность, Изолированность, Стойкость.
+* _ACID_, _Atomicity_, _Consistency_, _Isolation_, _Durability_ -
+Атомарность, Согласованность, Изолированность, Стойкость.
 * _domain model_ - модель предметной области.
 * _UDT, _User-defined Data Types_ - типы, определяемые пользователем.
 * _problem of granularity_ - проблема детализации.
+* _persistence unit_ - единица хранения.
+* _JNDI_, _Java Naming and Directory Interface_ - это набор Java API, организованный в виде службы каталогов, который
+позволяет Java-клиентам открывать и просматривать данные и объекты по их именам.
 
 Объектно-реляционное отображение - это автоматическое (и прозрачное) сохранение объекта из Java-приложения
 в таблицах базы данных SQL с использованием метаданных, описывающих отображение между классами приложения
@@ -93,5 +98,37 @@
 На Java используется `iterator()`. Для БД это плохая идея, из-за большого количества запросов к БД.
 Проблемы _n + 1 запроса_ и _декартова произведения_.
 
+## С чего начать
 
+### JPA
 
+1. Необходимо создать _persistence unit_. Её конфигурационный файл располагается в `classpath:META-INF/persistene.xml`.
+2. Должен быть настроен _JNDI_ и _JTA_. Примеры библиотек: _bitronix_, _atomikos_.
+3. Источник данных `java.sql.DataSource`. Должен находиться в _JNDI_.
+4. Создать `javax.persistence.EntityManagerFactory`. Обычно он один на всё приложение.
+
+Пример работы см. код `com.example.helloworld.HelloWorldJPA`.
+
+#### Журналирование SQL
+
+Нужно включить (`true`) свойства `hibernate.format_sql` и `hibernate.user_sql_comments`.
+В настройках журналирования для категорий `org.hibernate.SQL` и `org.hibernate.type.descriptor.sql.BasicBinder`
+установить `TRACE`.
+
+#### Настройка JTA
+
+См. код `com.example.env.TransactionManagerSetup` и файл `classpath:jndi.properties`.
+
+### Hibernate
+
+0. _JDK 6_, _7_, _8_, если _Hibernate 5.0.1.Final_.
+На более старших версиях _JDK_ встречались проблемы при xml-конфигурировании.
+1. Должен быть _JNDI_ и _JTA_.
+2. Конфигурационный файл `classpath:hibernate.cfg.xml`. Название можно устанавливать своё.
+Файл можно заменить на программную конфигурацию.
+3. Создать `org.hibernate.service.ServiceRegistry`.
+4. С помощью `org.hibernate.boot.MetadataSource` указать какие классы участвуют в отображении.
+5. Создать `org.hibernate.boot.Metadata`.
+6. Итог должен быть `org.hibernate.SessionFactory`. Обычно он один на всё приложение.
+
+Пример работы см. код `com.example.heeloworld.HelloWorldHibernate`.
