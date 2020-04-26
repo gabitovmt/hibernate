@@ -42,7 +42,7 @@ public class TransactionManagerTest {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void afterSuite() throws Exception {
+    public void afterSuite() {
         if (TM != null) {
             TM.stop();
         }
