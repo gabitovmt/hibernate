@@ -113,7 +113,7 @@
 3. Источник данных `java.sql.DataSource`. Должен находиться в _JNDI_.
 4. Создать `javax.persistence.EntityManagerFactory`. Обычно он один на всё приложение.
 
-Пример работы см. код `com.HelloWorldJPA`.
+Пример работы см. код `com.example.helloworld.HelloWorldJPA` (модуль `hello-world`).
 
 #### Журналирование SQL
 
@@ -123,7 +123,7 @@
 
 #### Настройка JTA
 
-См. код `com.TransactionManagerSetup` и файл `classpath:jndi.properties`.
+См. код `com.example.env.TransactionManagerSetup` и файл `classpath:jndi.properties` (модуль `base`).
 
 ### Hibernate
 
@@ -137,7 +137,7 @@
 5. Создать `org.hibernate.boot.Metadata`.
 6. Итог должен быть `org.hibernate.SessionFactory`. Обычно он один на всё приложение.
 
-Пример работы см. код `com.example.heeloworld.HelloWorldHibernate`.
+Пример работы см. код `com.example.helloworld.HelloWorldHibernate` (модуль `hello-world`).
 
 ## Модели предметной области и метаданные
 
@@ -179,7 +179,7 @@
 
 * _POJO_.
 * Не обязательность реализовывать `java.io.Serializable`.
-* Может быть абстрактным.
+* Класс может быть абстрактным.
 * Не может быть финальным как он, так и его методы.
 * Должен быть верхнего уровня.
 * Иметь конструктор без аргументов с областью видимости не ниже пакета.
@@ -195,7 +195,7 @@
 * Для аннотаций из `org.hibernate` использовать полное имя (т.е. вместе с именем пакета).
   Так будет понятно, что используется из не _JPA_.
 
-Пример реализации см. код `com.SimpleModel`.
+Пример реализации см. код `com.example.model.simple.SimpleModel` (модуль `hello-world`).
 
 При двунаправленной связи необходимо выполнять два действия:
 ~~~
@@ -209,4 +209,4 @@ child.setParent(parent);
 * Если предпочитаете методы доступа, помечать нужно _getter-методы_.
 
 Пример использования см. код `com.example.model.simple.ModelOperations` и
-`com.example.model.simple.ModelOperationsSave`.
+`com.example.model.simple.ModelOperationsSave` (модуль `hello-world`).
