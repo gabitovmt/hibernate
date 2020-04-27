@@ -1,13 +1,54 @@
 package com.example.model.simple;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 public class Item {
 
+    @Id
+    @GeneratedValue
+    protected Long id;
+
+    @NotNull
+    @Size(
+            min = 2,
+            max = 255,
+            message = "Name is required, maximum 255 characters."
+    )
+    protected String name;
+
+    @Future
+    protected Date auctionEnd;
+
+    @Transient
     protected Set<Bid> bids = new HashSet<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getAuctionEnd() {
+        return auctionEnd;
+    }
+
+    public void setAuctionEnd(Date auctionEnd) {
+        this.auctionEnd = auctionEnd;
+    }
 
     public Set<Bid> getBids() {
         return Collections.unmodifiableSet(bids);

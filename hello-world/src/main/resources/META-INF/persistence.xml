@@ -13,4 +13,37 @@
             <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="validationAutoPU">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.example.model.simple.Item</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <validation-mode>AUTO</validation-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="validationCallbackPU">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.example.model.simple.Item</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <validation-mode>CALLBACK</validation-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="validationNonePU">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.example.model.simple.Item</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <validation-mode>NONE</validation-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
 </persistence>
