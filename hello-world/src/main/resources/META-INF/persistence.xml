@@ -46,4 +46,26 @@
             <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="SimpleXMLCompletePU">
+        <jta-data-source>myDS</jta-data-source>
+        <mapping-file>META-INF/simple_xml_complete_pu_orm.xml</mapping-file>
+        <class>com.example.model.simple.Item</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="SimpleXMLPU">
+        <jta-data-source>myDS</jta-data-source>
+        <mapping-file>META-INF/simple_xml_pu_orm.xml</mapping-file>
+        <class>com.example.model.simple.Item</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
 </persistence>

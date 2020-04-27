@@ -1,0 +1,36 @@
+<entity-mappings
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+                "http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+    <!-- Сначала должны идти глобальные метаданные -->
+    <persistence-unit-metadata>
+        <!-- Игнорировать все аннотации и любые метаданные отображения -->
+        <xml-mapping-metadata-complete/>
+        <!-- Некоторые настройки по умолчанию -->
+        <persistence-unit-defaults>
+            <!-- Экранировать все SQL-имена, включая столбцы и таблицы: например, если ваши SQL-имена являются
+                 ключевыми словами (такими как "USER") -->
+            <delimited-identifiers/>
+        </persistence-unit-defaults>
+    </persistence-unit-metadata>
+
+    <!-- access="FIELD" - Hibernate будет обращаться к данным напрямую к полям
+         metadata-complete="true" - Игнорировать все аннотации в классе.
+             Здесь это уже лишнее, т.к. объявлено уже глобально -->
+    <entity class="com.example.model.simple.Item" access="FIELD" metadata-complete="true">
+        <attributes>
+            <id name="id">
+                <generated-value strategy="AUTO"/>
+            </id>
+            <basic name="name">
+                <column name="full_name"/>
+            </basic>
+            <basic name="auctionEnd">
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+            <transient name="bids"/>
+        </attributes>
+    </entity>
+</entity-mappings>

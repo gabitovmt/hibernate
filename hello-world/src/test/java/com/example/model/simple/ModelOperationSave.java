@@ -29,7 +29,15 @@ public class ModelOperationSave extends TransactionManagerTest {
 
     @AfterSuite(alwaysRun = true)
     public void stop() {
-        validationAutoEmf.close();
+        if (validationAutoEmf != null) {
+            validationAutoEmf.close();
+        }
+        if (validationCallbackEmf != null) {
+            validationCallbackEmf.close();
+        }
+        if (validationNoneEmf != null) {
+            validationNoneEmf.close();
+        }
     }
 
     @Test

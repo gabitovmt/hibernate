@@ -210,3 +210,11 @@ child.setParent(parent);
 
 Пример использования см. код `com.example.model.simple.ModelOperations` и
 `com.example.model.simple.ModelOperationsSave` (модуль `hello-world`).
+
+#### Метаданные во внешних XML-файлах
+
+_JPA_ автоматически ищет файл `META-INF/orm.xml`. Если директория и имя файла другое, необходимо указать его
+в `<persistence-unit>` с помощью элемента `<mapping-file>`.
+
+Примеры см. код `com.example.model.simple.SimpleXml` и файлы `META-INF\persistence.xml`,
+`META-INF\simple_xml_complete_pu_orm.xml` и `META-INF\simple_xml_pu_orm.xml` (модуль `hello-world`).

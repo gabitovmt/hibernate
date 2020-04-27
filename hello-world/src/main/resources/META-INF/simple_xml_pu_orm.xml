@@ -1,0 +1,18 @@
+<entity-mappings
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+                "http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+    <!-- Данный xml лишь переопределяет аннотации в классах -->
+    <entity class="com.example.model.simple.Item">
+        <attributes>
+            <!-- Для данного поля Hibernate будет игнорировать аннотации с пакета
+                 javax.persistence.annotation и org.hibernate.annotations.
+                 Аннотации, такие как Bean Validation будут продолжать работать -->
+            <basic name="name">
+                <column name="full_name"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
