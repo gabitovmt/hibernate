@@ -213,8 +213,24 @@ child.setParent(parent);
 
 #### Метаданные во внешних XML-файлах
 
-_JPA_ автоматически ищет файл `META-INF/orm.xml`. Если директория и имя файла другое, необходимо указать его
+##### JPA
+
+_JPA_ автоматически ищет файл `classpath:META-INF/orm.xml`. Если директория и имя файла другое, необходимо указать его
 в `<persistence-unit>` с помощью элемента `<mapping-file>`.
 
-Примеры см. код `com.example.model.simple.SimpleXml` и файлы `META-INF\persistence.xml`,
-`META-INF\simple_xml_complete_pu_orm.xml` и `META-INF\simple_xml_pu_orm.xml` (модуль `hello-world`).
+Примеры см. код `com.example.model.simple.SimpleXml` и файлы `classpath:META-INF\persistence.xml`,
+`classpath:META-INF\simple_xml_complete_pu_orm.xml` и `classpath:META-INF\simple_xml_pu_orm.xml` (модуль `hello-world`).
+
+**Все** свойства класса являются хранимыми.
+
+##### Hibernate
+
+По соглашению файл должен иметь то же имя и пакет, что и класс:
+`my/model/Item.hbm.xml` для `my.model.Item`.
+
+Отображение класса в XML-документе считается завершённым. Нельзя переопределять аннотации в классе, как в JPA.
+
+Если свойство не имеет отображения, оно считается **временным**.
+
+Примеры см. код `com.example.model.simple.SimpleXml` и файлы `classpath:simple_xml.cfg.xml` и
+`classpath:com/example/model/simple/Item.hbm.xml` (модуль `hello-world`).
