@@ -23,6 +23,7 @@
 * _модель предметной области_ - концептуальная модель сущностей и их атрибутов.
 * _POJO_, _Plain Old Java Objects_ - старые добрые объекты Java.
 * _RMI_, _Remote Method Invocation_ - механизм удалённого вызова методов.
+* _apt_, _annotation proessing tool_ - утилита обработки аннотаций.
 
 Объектно-реляционное отображение - это автоматическое (и прозрачное) сохранение объекта из Java-приложения
 в таблицах базы данных SQL с использованием метаданных, описывающих отображение между классами приложения
@@ -234,3 +235,13 @@ _JPA_ автоматически ищет файл `classpath:META-INF/orm.xml`.
 
 Примеры см. код `com.example.model.simple.SimpleXml` и файлы `classpath:simple_xml.cfg.xml` и
 `classpath:com/example/model/simple/Item.hbm.xml` (модуль `hello-world`).
+
+#### Доступ к метаданным во время выполнения
+
+В _JPA_ API метамодели поддерживает только чтение,
+в оригинальном _Hibernate_ (`org.hibernate.cfg.Configuration`) - чтение и запись.
+
+Пример см. код `com.example.model.simple.AccessJPAMetamodel` и `com.example.model.simple.Item_` (модуль `hello-world`).
+
+Класс метаданных `com.example.model.simple.Item_` можно автоматически сгенерировать. См. проект
+`Hibernate JPA2 Metamodel Generator` (отдельный проект в семействе _Hibernate_).
