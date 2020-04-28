@@ -1,30 +1,27 @@
 package com.example.model.simple;
 
 import com.example.env.TransactionManagerTest;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.transaction.UserTransaction;
 
 public class SimpleXml extends TransactionManagerTest {
 
-    private EntityManagerFactory simpleXmlCompleteEmf;
-    private EntityManagerFactory simpleXmlEmf;
-    private UserTransaction tx;
+    private static EntityManagerFactory simpleXmlCompleteEmf;
+    private static EntityManagerFactory simpleXmlEmf;
 
-    @BeforeSuite()
-    public void init() {
+    @BeforeClass()
+    public static void init() {
         simpleXmlCompleteEmf = Persistence.createEntityManagerFactory("SimpleXMLCompletePU");
         simpleXmlEmf = Persistence.createEntityManagerFactory("SimpleXMLPU");
-        tx = TM.getUserTransaction();
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void stop() {
+    @AfterClass
+    public static void stop() {
         if (simpleXmlCompleteEmf != null) {
             simpleXmlCompleteEmf.close();
         }
@@ -36,7 +33,7 @@ public class SimpleXml extends TransactionManagerTest {
     @Test
     public void simpleXmlComplete() throws Exception {
         try {
-            tx.begin();
+            TX.begin();
             EntityManager em = simpleXmlCompleteEmf.createEntityManager();
 
             Item item = new Item();
@@ -44,7 +41,7 @@ public class SimpleXml extends TransactionManagerTest {
 
             em.persist(item);
 
-            tx.commit();
+            TX.commit();
             em.close();
         } finally {
             TM.rollback();
@@ -54,7 +51,7 @@ public class SimpleXml extends TransactionManagerTest {
     @Test
     public void simpleXml() throws Exception {
         try {
-            tx.begin();
+            TX.begin();
             EntityManager em = simpleXmlEmf.createEntityManager();
 
             Item item = new Item();
@@ -62,7 +59,7 @@ public class SimpleXml extends TransactionManagerTest {
 
             em.persist(item);
 
-            tx.commit();
+            TX.commit();
             em.close();
         } finally {
             TM.rollback();

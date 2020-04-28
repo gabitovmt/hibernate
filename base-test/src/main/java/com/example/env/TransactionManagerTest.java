@@ -1,50 +1,37 @@
 package com.example.env;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 
+import javax.transaction.UserTransaction;
 import java.util.Locale;
 
-/**
- * Starts and stops the transaction manager/database pool before/after a test suite.
- * <p>
- * All tests in a suite execute with a single {@link TransactionManagerSetup}, call
- * the static {@link TransactionManagerTest#TM} in your test to access the JTA
- * transaction manager and database connections.
- * </p>
- * <p>
- * The test parameters <code>database</code> (specifying a supported
- * {@link DatabaseProduct}) and a <code>connectionURL</code> are optional.
- * The default is an in-memory H2 database instance, created and destroyed
- * automatically for each test suite.
- * </p>
- */
 public class TransactionManagerTest {
-
     public static final Logger LOG = LoggerFactory.getLogger(TransactionManagerSetup.class);
-
-    // Static single database connection manager per test suite
     public static TransactionManagerSetup TM;
+    public static UserTransaction TX;
 
-    @Parameters({"database", "connectionURL"})
-    @BeforeSuite()
-    public void beforeSuite(@Optional String database, @Optional String connectionURL) throws Exception {
-        TM = new TransactionManagerSetup(
-                database != null
-                        ? DatabaseProduct.valueOf(database.toUpperCase(Locale.US))
-                        : DatabaseProduct.H2,
-                connectionURL
-        );
+    private static void initTM(String database, String connectionURL) throws Exception {
+        DatabaseProduct dbProduct = database != null
+                ? DatabaseProduct.valueOf(database.toUpperCase(Locale.US))
+                : DatabaseProduct.H2;
+        TM = new TransactionManagerSetup(dbProduct, connectionURL);
+        LOG.info("TransactionManagerSetup is initialized");
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void afterSuite() {
+    @BeforeClass
+    public static void beforeAll() throws Exception {
+        initTM(null, null);
+        TX = TM.getUserTransaction();
+    }
+
+    @AfterClass
+    public static void afterAll() {
         if (TM != null) {
             TM.stop();
+            TX = null;
         }
     }
 }

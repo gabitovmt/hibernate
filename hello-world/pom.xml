@@ -12,7 +12,6 @@
     <artifactId>hello-world</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>base</artifactId>
@@ -22,7 +21,6 @@
             <groupId>com.example</groupId>
             <artifactId>base-test</artifactId>
             <version>0.1-SNAPSHOT</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
