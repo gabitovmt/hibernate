@@ -11,6 +11,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="validationAutoPU">
@@ -22,6 +24,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="validationCallbackPU">
@@ -33,6 +37,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="validationNonePU">
@@ -44,6 +50,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="SimpleXMLCompletePU">
@@ -55,6 +63,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="SimpleXMLPU">
@@ -66,6 +76,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Нужно для отключения сканирования *.hbm.xml файлов -->
+            <property name="hibernate.archive.autodetection" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>
