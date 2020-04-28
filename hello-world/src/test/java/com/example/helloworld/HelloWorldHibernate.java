@@ -12,12 +12,12 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.H2Dialect;
 import org.hibernate.resource.transaction.backend.jta.internal.JtaTransactionCoordinatorBuilderImpl;
 import org.hibernate.service.ServiceRegistry;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import javax.transaction.UserTransaction;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class HelloWorldHibernate extends TransactionManagerTest {
 
@@ -43,7 +43,7 @@ public class HelloWorldHibernate extends TransactionManagerTest {
         MetadataBuilder metadataBuilder = metadataSources.getMetadataBuilder();
         Metadata metadata = metadataBuilder.build();
 
-        assertEquals(metadata.getEntityBindings().size(), 1);
+        assertEquals(1, metadata.getEntityBindings().size());
 
         return metadata.buildSessionFactory();
     }
@@ -97,8 +97,8 @@ public class HelloWorldHibernate extends TransactionManagerTest {
 
         List<Message> messages = session.createCriteria(Message.class).list();
 
-        assertEquals(messages.size(), 1);
-        assertEquals(messages.get(0).getText(), "Hello World!");
+        assertEquals(1, messages.size());
+        assertEquals("Hello World!", messages.get(0).getText());
 
         messages.get(0).setText("Take me to your leader!");
 

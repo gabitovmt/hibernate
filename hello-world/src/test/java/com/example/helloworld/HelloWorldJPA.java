@@ -2,7 +2,7 @@ package com.example.helloworld;
 
 import com.example.env.TransactionManagerTest;
 import com.example.model.Message;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.transaction.UserTransaction;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class HelloWorldJPA extends TransactionManagerTest {
 
@@ -56,8 +56,8 @@ public class HelloWorldJPA extends TransactionManagerTest {
 
         List<Message> messages = em.createQuery("select m from Message m").getResultList();
 
-        assertEquals(messages.size(), 1);
-        assertEquals(messages.get(0).getText(), "Hello World!");
+        assertEquals(1, messages.size());
+        assertEquals("Hello World!", messages.get(0).getText());
 
         messages.get(0).setText("Take me to your leader!");
 

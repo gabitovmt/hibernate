@@ -1,6 +1,6 @@
 package com.example.model.simple;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ModelOperations {
 
@@ -24,16 +24,16 @@ public class ModelOperations {
         item.setAuctionEnd(new Date());
 
         Set<ConstraintViolation<Item>> violations = validator.validate(item);
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
 
         ConstraintViolation<Item> violation = violations.iterator().next();
         String failedPropertyName = violation.getPropertyPath().iterator().next().getName();
-        assertEquals(failedPropertyName, "auctionEnd");
+        assertEquals("auctionEnd", failedPropertyName);
 
         if (Locale.getDefault().getLanguage().equals("en")) {
-            assertEquals(violation.getMessage(), "must be in the future");
+            assertEquals("must be in the future", violation.getMessage());
         } else if (Locale.getDefault().getLanguage().equals("ru")) {
-            assertEquals(violation.getMessage(), "должно быть в будущем");
+            assertEquals("должно быть в будущем", violation.getMessage());
         }
     }
 }
