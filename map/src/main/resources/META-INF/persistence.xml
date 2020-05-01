@@ -1,0 +1,28 @@
+<persistence
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
+    <persistence-unit name="map">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.example.model.simple.Item</class>
+        <class>com.example.model.generatedvalue.Auto</class>
+        <class>com.example.model.generatedvalue.Sequence</class>
+        <class>com.example.model.generatedvalue.Identity</class>
+        <class>com.example.model.generatedvalue.Table</class>
+        <class>com.example.model.generatedvalue.NameSequence</class>
+        <class>com.example.model.generatedvalue.NameTable</class>
+        <class>com.example.model.generatedvalue</class>
+        <class>com.example.model.generatedvalue.IdGenerator</class>
+        <class>com.example.model.generatedvalue.GUID</class>
+        <class>com.example.model.generatedvalue.UUID</class>
+        <class>com.example.model.generatedvalue.UUIDHex</class>
+        <class>com.example.model.generatedvalue.UUIDString</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

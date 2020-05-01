@@ -1,0 +1,17 @@
+<entity-mappings
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+                "http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+    <!-- Сначала должны идти глобальные метаданные -->
+    <persistence-unit-metadata>
+        <!-- Некоторые настройки по умолчанию -->
+        <persistence-unit-defaults>
+            <!-- Экранировать все SQL-имена, включая столбцы и таблицы: например, если ваши SQL-имена являются
+                 ключевыми словами (такими как "USER") -->
+            <!-- Тестировалось в Hibernate 5.0.1.Final, 5.4.14.Final, 6.0.0.Alpha5. Не работает -->
+            <delimited-identifiers/>
+        </persistence-unit-defaults>
+    </persistence-unit-metadata>
+</entity-mappings>

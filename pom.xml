@@ -12,6 +12,7 @@
         <module>base</module>
         <module>hello-world</module>
         <module>base-test</module>
+        <module>map</module>
     </modules>
 
     <build>
