@@ -1,28 +1,17 @@
 package com.example.model.generatedvalue;
 
-import com.example.env.TransactionManagerTest;
-import org.junit.AfterClass;
+import com.example.env.SimpleTransactionManagerTest;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-public class GeneratedValueTest extends TransactionManagerTest {
-
-    private static EntityManagerFactory emf;
+public class GeneratedValueTest extends SimpleTransactionManagerTest {
 
     @BeforeClass
     public static void init() {
-        emf = Persistence.createEntityManagerFactory("map");
-    }
-    @AfterClass
-    public static void close() {
-        if (emf != null) {
-            emf.close();
-        }
+        initEntityManagerFactory("map");
     }
 
     /**
@@ -30,7 +19,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void autoTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -51,7 +40,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void sequenceTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -72,7 +61,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void identityTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -93,7 +82,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void tableTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -115,7 +104,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void tableTests() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -147,7 +136,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void nameSequenceTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -172,7 +161,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void nameTableTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -197,7 +186,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void idGeneratorTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -223,7 +212,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
     @Test
     @Ignore // H2 не поддерживает стратегию guid
     public void guidTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 
@@ -248,7 +237,7 @@ public class GeneratedValueTest extends TransactionManagerTest {
      */
     @Test
     public void uuidTest() throws Exception {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             TX.begin();
 

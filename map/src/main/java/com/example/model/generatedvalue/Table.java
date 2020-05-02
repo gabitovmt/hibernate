@@ -6,7 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@javax.persistence.Table(name = "\"Table\"")
+// Delimited identifier, отделяемый идентификатор в Hibernate
+//@javax.persistence.Table(name = "`Table`")
+// Delimited identifier, отделяемый идентификатор в JPA
+//@javax.persistence.Table(name = "\"Table\"")
 public class Table {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

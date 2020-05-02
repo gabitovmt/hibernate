@@ -292,4 +292,9 @@ _Surrogate key_, _суррогатный ключ_ - это искусствен
 
 _Composite key_, _составной ключ_ - это ключ из нескольких столбцов.
 
-Пример настройки генераторов ключей см. код `com.example.model.generatedvalue.GeneratedValueTest` (модуль `map`).
+* Пример настройки **генераторов ключей** см. код `com.example.model.generatedvalue.GeneratedValueTest` (модуль `map`).
+* Пример **заключения идентификаторов SQL в кавычки** см. код `com.example.model.generatedvalue.Table` (модуль `map`).
+* Пример **реализации соглашений об именовании** см. код `com.example.model.naming.NamingStrategyTest` (модуль `map`).
+* Пример **динамического формирования SQL** см. код `com.example.model.dynamic.DynamicSqlTest` (модуль `map`).
+* Пример **неизменяемой сущности** см. код `com.example.model.immutable.ImmutableEntityTest` (модуль `map`).
+* Пример **отображения сущности в подзапрос** см. код `com.example.model.subselect.SubSelectTest` (модуль `map`).

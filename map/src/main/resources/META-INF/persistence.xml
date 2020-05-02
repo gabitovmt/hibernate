@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
     <persistence-unit name="map">
         <jta-data-source>myDS</jta-data-source>
-        <class>com.example.model.simple.Item</class>
+
         <class>com.example.model.generatedvalue.Auto</class>
         <class>com.example.model.generatedvalue.Sequence</class>
         <class>com.example.model.generatedvalue.Identity</class>
@@ -18,11 +18,42 @@
         <class>com.example.model.generatedvalue.UUID</class>
         <class>com.example.model.generatedvalue.UUIDHex</class>
         <class>com.example.model.generatedvalue.UUIDString</class>
+
+        <class>com.example.model.dynamic.StaticItem</class>
+        <class>com.example.model.dynamic.DynamicItem</class>
+
+        <class>com.example.model.immutable.ImmutableItem</class>
+
+        <class>com.example.model.subselect.Item</class>
+        <class>com.example.model.subselect.Bid</class>
+        <class>com.example.model.subselect.ItemBidSummary</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Заключение идентификаторов SQL в кавычки -->
+            <property name="hibernate.auto_quote_keyword" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="naming-strategy">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.example.model.naming.SystemUser</class>
+        <class>com.example.model.namingother.SystemUser</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!--
+             Стратегии именования. Стратегии выполняются в следующем порядке:
+             1. hibernate.implicit_naming_strategy
+             2. hibernate.physical_naming_strategy
+             -->
+            <property name="hibernate.physical_naming_strategy" value="com.example.shared.SpringNamingStrategy"/>
+            <property name="hibernate.implicit_naming_strategy" value="com.example.shared.CEImplicitNamingStrategy"/>
         </properties>
     </persistence-unit>
 </persistence>
