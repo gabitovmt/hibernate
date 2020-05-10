@@ -1,8 +1,6 @@
-package com.example.model.com.example.model.dynamic;
+package com.example.model.dynamic;
 
 import com.example.env.SimpleTransactionManagerTest;
-import com.example.model.dynamic.DynamicItem;
-import com.example.model.dynamic.StaticItem;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
